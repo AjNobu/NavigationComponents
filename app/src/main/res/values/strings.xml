@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">First Application</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="favorite_anime">Favorite Anime</string>
+    <string name="email">Email</string>
+    <string name="name">Full Name</string>
+    <string name="submit">Submit</string>
+</resources>
