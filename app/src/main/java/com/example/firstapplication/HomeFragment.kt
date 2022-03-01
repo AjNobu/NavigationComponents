@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import com.example.firstapplication.databinding.FragmentHomeBinding
 
 
@@ -22,18 +23,18 @@ private var _binding: FragmentHomeBinding? = null
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        navCon = NavController(requireContext())
+        navCon = NavHostFragment.findNavController(this)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val name = binding.inputLayout1.editText?.text.toString()
-        val email = binding.inputLayout2.editText?.text.toString()
-        val anime = binding.inputLayout3.editText?.text.toString()
-        val action =
-            HomeFragmentDirections.actionHomeFragmentToSubmissionFragment(name, email, anime)
+//        val name = binding.inputLayout1.editText?.text.toString()
         binding.submit.setOnClickListener {
-            navCon.navigate(action)
+            val bundle = Bundle()
+            bundle.putString("name", binding.inputLayout1.editText?.text.toString())
+            bundle.putString("email", binding.inputLayout2.editText?.text.toString())
+            bundle.putString("anime", binding.inputLayout3.editText?.text.toString())
+            navCon.navigate(R.id.action_homeFragment_to_submissionFragment)
         }
     }
 

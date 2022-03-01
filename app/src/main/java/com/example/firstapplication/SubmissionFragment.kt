@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.NavController
-import com.example.firstapplication.databinding.FragmentHomeBinding
 import com.example.firstapplication.databinding.FragmentSubmissionBinding
 
 
@@ -17,12 +16,18 @@ class SubmissionFragment : Fragment() {
     private lateinit var email: String
     private lateinit var anime: String
 
+    companion object{
+        const val NAME = "name"
+        const val EMAIL = "email"
+        const val ANIME = "anime"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            name = it.getString(name).toString()
-            email = it.getString(email).toString()
-            anime = it.getString(anime).toString()
+            name = it.getString(NAME).toString()
+            email = it.getString(EMAIL).toString()
+            anime = it.getString("anime").toString()
         }
     }
 
@@ -32,7 +37,6 @@ class SubmissionFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentSubmissionBinding.inflate(inflater, container, false)
-//        navCon = NavController(requireContext())
         return binding.root
     }
 
